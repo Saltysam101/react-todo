@@ -4,6 +4,7 @@ import cors from "cors";
 import apiRouter from "./routes";
 import config from "./config";
 import { errorHandler } from "./middlewares/errorHandler";
+import { join } from "path";
 
 const app = express();
 
@@ -37,11 +38,11 @@ app.use("/api", apiRouter);
  * Only needed in production when you are not using the react dev server
  */
 app.use((req, res, next) => {
-  try {
-    res.sendFile(join(__dirname, "../client/build/index.html"));
-  } catch (error) {
-    next(error);
-  }
+    try {
+        res.sendFile(join(__dirname, "../client/build/index.html"));
+    } catch (error) {
+        next(error);
+    }
 });
 
 /**
@@ -54,5 +55,5 @@ app.use(errorHandler);
  * You can access your app at http://localhost:<port>
  */
 app.listen(config.port || 8080, () =>
-  console.log(`Server listening on port ${config.port}...`)
+    console.log(`Server listening on port ${config.port}...`)
 );
