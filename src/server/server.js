@@ -2,6 +2,8 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import apiRouter from "./routes";
+import registerRouter from "./routes/register";
+import loginRouter from "./routes/login";
 import config from "./config";
 import { errorHandler } from "./middlewares/errorHandler";
 import { join } from "path";
@@ -32,7 +34,8 @@ app.use(express.static(join(__dirname, "../client/build")));
  * Directs all routes starting with /api to the top level api express router
  */
 app.use("/api", apiRouter);
-
+app.use("/register", registerRouter);
+app.use("/login", loginRouter);
 /**
  * Sends the react app index.html for page requests
  * Only needed in production when you are not using the react dev server
