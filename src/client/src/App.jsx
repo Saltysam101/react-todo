@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import WelcomePage from "./pages/welcome.page.jsx";
 import SignupPage from "./pages/signup.page.jsx";
 import LoginPage from "./pages/login.page.jsx";
+import TodoPage from "./pages/todo.page.jsx";
 import './styles/global.css';
 function App() {
   
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" exact Component={WelcomePage}/>
       <Route path="/register" Component={SignupPage} />
       <Route path="/login" Component={LoginPage} />
+      <Route path="/todo" Component={TodoPage} />
      </Routes>
     </Router>
   );

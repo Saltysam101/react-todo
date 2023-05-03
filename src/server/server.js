@@ -1,4 +1,4 @@
-import express from "express";
+import express, { application } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import apiRouter from "./routes";
@@ -7,6 +7,13 @@ import loginRouter from "./routes/login";
 import config from "./config";
 import { errorHandler } from "./middlewares/errorHandler";
 import { join } from "path";
+import session from "express-session";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+
+
+
+
 
 const app = express();
 
@@ -18,7 +25,26 @@ app.use(express.json());
 /**
  * Enables incoming requests from cross origin domains
  */
-app.use(cors());
+app.use(cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true
+}));
+/* app.use(cookieParser()); */
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(session({
+    key: "userId",
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 10000,
+        sameSite: false,
+        httpOnly: true,
+        secure: false
+    }
+}))
 
 /**
  * Logs incoming request information to the dev console
@@ -34,7 +60,15 @@ app.use(express.static(join(__dirname, "../client/build")));
  * Directs all routes starting with /api to the top level api express router
  */
 app.use("/api", apiRouter);
+
+/**
+ * Directs all routes starting with /register to the top level register express router
+ */
 app.use("/register", registerRouter);
+
+/**
+ * Directs all routes starting with /login to the top level login express router
+ */
 app.use("/login", loginRouter);
 /**
  * Sends the react app index.html for page requests
