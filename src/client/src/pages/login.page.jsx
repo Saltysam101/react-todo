@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 
+
 export default function LoginPage() {
 
   const [email, setEmail] = useState("");
@@ -18,11 +19,17 @@ export default function LoginPage() {
 
   useEffect(()=> {
     Axios.get("http://localhost:8080/login")
-    .then((response) => console.log("get", response.data.user))
-  },[])
+    .then((response) => {
+      if(response.data.user) {
+        localStorage.setItem("IsAuth", true)
+        console.log("get", response.data.user[0].FirstName)
+      } else {
+        console.log("no user data")
+      }
+  },[])})
 
   return (
-    <form>
+    <form onSubmit={(e) => e.preventDefault()}>
       <label htmlFor="email">Email</label>
       <input 
       id='email' 

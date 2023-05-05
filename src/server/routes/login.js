@@ -4,8 +4,8 @@ import query from "../db/utils";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    if (req.session.user) {
+router.get("/", async(req, res) => {
+    if (await req.session.user) {
         res.send({ loggedIn: true, user: req.session.user })
     } else {
         res.send({ loggedIn: false })
@@ -23,8 +23,10 @@ router.post("/", async(req, res) => {
             console.error(err)
         } else if (response === true) {
             req.session.user = user
-            console.log("reqsession", req.session.user)
+                //console.log("reqsession", req.session.user)
 
+            console.log("session", req.sessionID)
+                //console.log("cookie", req.session.cookie)
             console.log("login successful")
             res.status(200).send(req.session.user)
                 /* console.log(user) */
