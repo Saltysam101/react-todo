@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function LoginPage() {
 
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
 
   Axios.defaults.withCredentials = true;
 
@@ -14,19 +18,32 @@ export default function LoginPage() {
       email: email,
       password: password
     })
-    .then((res) => console.log(res))
-  }
+    .then((res) => {
+        if (res.data) {
+          localStorage.setItem("IsAuth", true);
+          console.log("response", res.data[0])
+          navigate("/todo", {
+            state: {
+              id: res.data[0].id,
+              firstName: res.data[0].FirstName,
+              lastName: res.data[0].LastName,
+              todos: res.data[0].todos
+            }
+          })
+        } else {
+          console.log("no user data")
+        }
+  })}
 
-  useEffect(()=> {
+  /* useEffect(()=> {
     Axios.get("http://localhost:8080/login")
     .then((response) => {
       if(response.data.user) {
-        localStorage.setItem("IsAuth", true)
         console.log("get", response.data.user[0].FirstName)
       } else {
         console.log("no user data")
       }
-  },[])})
+  },[])}) */
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>

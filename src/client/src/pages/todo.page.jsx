@@ -1,6 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 export default function Todo() {
+
+  const location = useLocation();
+
+  console.log(location.state);
 
   function signOut () {
     localStorage.setItem("IsAuth", false)
