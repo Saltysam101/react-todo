@@ -1,14 +1,17 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Todo() {
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   console.log(location.state);
 
   function signOut () {
-    localStorage.setItem("IsAuth", false)
+    localStorage.removeItem("IsAuth")
+    navigate("/");
+
   }
   return (
     <div>
