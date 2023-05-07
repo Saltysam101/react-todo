@@ -1,5 +1,5 @@
 import express from "express";
-import { regitserUser } from "../controllers/register.controller";
+import { registerUser } from "../controllers/register.controller";
 import bcrypt from "bcrypt";
 
 const saltRound = 10;
@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
         } else {
 
             const user = { FirstName: firstName, LastName: lastName, Email: email, Password: hash }
-            let data = await regitserUser(user);
+            let data = await registerUser(user);
             console.log(data)
             res.json(data);
         }

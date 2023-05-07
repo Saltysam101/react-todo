@@ -4,6 +4,7 @@ import cors from "cors";
 import apiRouter from "./routes";
 import registerRouter from "./routes/register";
 import loginRouter from "./routes/login";
+import todoRouter from "./routes/todo";
 import config from "./config";
 import { errorHandler } from "./middlewares/errorHandler";
 import { join } from "path";
@@ -79,6 +80,11 @@ app.use("/register", registerRouter);
  * Directs all routes starting with /login to the top level login express router
  */
 app.use("/login", loginRouter);
+
+/**
+ * Directs all routes starting with /login to the top level login express router
+ */
+app.use("/todo", todoRouter);
 /**
  * Sends the react app index.html for page requests
  * Only needed in production when you are not using the react dev server
