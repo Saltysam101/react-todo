@@ -1,7 +1,15 @@
 import query from "../db/utils";
 
-const addTodo = async(id, todo) => {
-    return query(`UPDATE users set todos = ? WHERE id = ?`, [todo, id])
+const addTodo = async(todos) => {
+    return query(`INSERT INTO todos SET ?`, [todos])
 }
 
-export {addTodo}
+const selectTodos = async(userId) => {
+    return query("SELECT * FROM todos WHERE userID = ?", [userId])
+}
+
+const deleteTodo = async(userId, id) => {
+    return query("DELETE FROM todos WHERE userID = ? AND id = ?", [userId, id])
+}
+
+export {addTodo, selectTodos, deleteTodo}

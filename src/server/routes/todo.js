@@ -1,13 +1,29 @@
 import express from 'express';
-import { addTodo } from '../controllers/todo.controller';
+import { addTodo, selectTodos, deleteTodo } from '../controllers/todo.controller';
 
 const router = express.Router();
 
+router.get("/", async(req, res) => {
+    console.log("get")
+    let userId = req.query.userId;
+    console.log(req.query)
+    let data = await selectTodos(userId);
+    res.json(data)
+})
+
 router.post("/", async(req, res) => {
     let todos = req.body.todos
-    let id = req.body.id
+    let userId = req.body.userId
+    let userTodo = {todo: todos, userID: userId}
     console.log(req.body)
-    let data = await addTodo(id, todos)
+    let data = await addTodo(userTodo)
+    res.json(data)
+})
+
+router.delete("/", async(req, res) => {
+    let userId = req.query.userId;
+    let todoId = req.query.id;
+    let data = await deleteTodo(userId, todoId)
     res.json(data)
 })
 

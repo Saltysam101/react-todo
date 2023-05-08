@@ -26,8 +26,7 @@ export default function LoginPage() {
             state: {
               id: res.data[0].id,
               firstName: res.data[0].FirstName,
-              lastName: res.data[0].LastName,
-              todos: res.data[0].todos
+              lastName: res.data[0].LastName
             }
           })
         } else {
