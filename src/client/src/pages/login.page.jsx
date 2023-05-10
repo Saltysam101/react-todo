@@ -34,20 +34,12 @@ export default function LoginPage() {
         }
   })}
 
-  /* useEffect(()=> {
-    Axios.get("http://localhost:8080/login")
-    .then((response) => {
-      if(response.data.user) {
-        console.log("get", response.data.user[0].FirstName)
-      } else {
-        console.log("no user data")
-      }
-  },[])}) */
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form className="flex flex-col items-center justify-center gap-2 h-screen" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor="email">Email</label>
       <input 
+      className="border-2 border-blue-500 rounded-sm"
       id='email' 
       type="email"
       name='email'
@@ -55,14 +47,16 @@ export default function LoginPage() {
       onChange={(e) => setEmail(e.target.value)}
       />
       <label htmlFor="password">Password</label>
-      <input 
+      <input
+      className="border-2 border-blue-500 rounded-sm" 
       id='password' 
       type="password"
       name='password' 
-      
+      required
       onChange={(e) => setPassword(e.target.value)}
       />
       <button 
+      className="bg-blue-500 rounded border-2 p-1 text-white mt-4 hover:bg-white hover:text-blue-500 hover:border-blue-500"
       type="submit"
       onClick={login}
       >Submit</button>

@@ -20,9 +20,10 @@ export default function SignupPage() {
   }
 
   return (
-    <form>
+    <form className="flex flex-col items-center justify-center gap-2 h-screen">
       <label htmlFor="firstName">Firstname</label>
       <input 
+      className="border-2 border-blue-500 rounded-sm"
       id='firstName' 
       type="text" 
       onChange={(e) => {
@@ -31,6 +32,7 @@ export default function SignupPage() {
       />
       <label htmlFor="lastName">Lastname</label>
       <input 
+      className="border-2 border-blue-500 rounded-sm"
       id='lastName' 
       type="text" 
       onChange={(e) => {
@@ -39,6 +41,7 @@ export default function SignupPage() {
       />
       <label htmlFor="email">Email</label>
       <input 
+      className="border-2 border-blue-500 rounded-sm"
       id='email'
       type="text" 
       onChange={(e) => {
@@ -47,13 +50,15 @@ export default function SignupPage() {
       />
       <label htmlFor="password">Password</label>
       <input 
+      className="border-2 border-blue-500 rounded-sm"
       id='password' 
-      type="text" 
+      type="password" 
       onChange={(e) => {
         setPassword(e.target.value)
       }}
       />
       <button 
+      className="bg-blue-500 rounded border-2 p-1 text-white mt-4 hover:bg-white hover:text-blue-500 hover:border-blue-500"
       type="submit"
       onClick={register}
       >Submit</button>
