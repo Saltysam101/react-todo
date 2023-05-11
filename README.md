@@ -8,6 +8,9 @@ Within `client/`, you will find the `App.jsx` to start, along with other folders
 
 Within `Sql/`, you will find the necessary files for the mysql db.
 
+## Important Note About Ports
+Frontend is sending requests to port 8080, which means the server needs to run on port 8080.
+
 Read [Frontend Project Structure](./src/client/README.md#project-structure) and [Backend Project Structure](./src/server/README.md#project-structure) for more details on the respective `/client` and `/server/` organization.
 
 ## Issues
