@@ -11,6 +11,10 @@ Within `Sql/`, you will find the necessary files for the mysql db.
 ## Important Note About Ports
 Frontend is sending requests to port 8080, which means the server needs to run on port 8080.
 
+## Installing dependencies
+
+To install dependencies for the client, you just need to `cd client` and run `npm install`. For the server folder, it's the same; `cd server` and run `npm install`. 
+
 Read [Frontend Project Structure](./src/client/README.md#project-structure) and [Backend Project Structure](./src/server/README.md#project-structure) for more details on the respective `/client` and `/server/` organization.
 
 ## Issues
