@@ -39,6 +39,9 @@ app.use(cors({
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+/**
+ * Creates express session and stores data in MySQLStore
+ */
 app.use(session({
     key: "userId",
     secret: process.env.SESSION_SECRET,
