@@ -25,7 +25,7 @@ router.post("/", async(req, res) => {
             req.session.user = user
                 //console.log("reqsession", req.session.user)
 
-            console.log("session", req.sessionID)
+            //console.log("session", req.sessionID)
                 //console.log("cookie", req.session.cookie)
             console.log("login successful")
             res.status(200).send(req.session.user)

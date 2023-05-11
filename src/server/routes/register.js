@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
 
             const user = { FirstName: firstName, LastName: lastName, Email: email, Password: hash }
             let data = await registerUser(user);
-            console.log(data)
+            //console.log(data)
             res.json(data);
         }
     })

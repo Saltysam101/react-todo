@@ -11,7 +11,6 @@ import { join } from "path";
 import session from "express-session";
 import bodyParser from "body-parser";
 const MySQLStore = require("express-mysql-session")(session);
-import cookieParser from "cookie-parser";
 
 
 const sessionStore = new MySQLStore(config.mysql);
@@ -38,20 +37,16 @@ app.use(cors({
     methods: ["GET", "POST", "DELETE"],
     credentials: true
 }));
-/* app.use(cookieParser()); */
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
-    //key: "userId",
+    key: "userId",
     secret: process.env.SESSION_SECRET,
     resave: false,
     store: sessionStore,
     saveUninitialized: false,
     cookie: {
         maxAge: 86400,
-        /* sameSite: false,
-        httpOnly: false,
-        secure: false, */
         path: '/'
     }
 }))

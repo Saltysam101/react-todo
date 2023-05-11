@@ -21,7 +21,7 @@ export default function LoginPage() {
     .then((res) => {
         if (res.data) {
           localStorage.setItem("IsAuth", true);
-          console.log("response", res.data[0])
+          //console.log("response", res.data[0])
           navigate("/todo", {
             state: {
               id: res.data[0].id,
@@ -30,7 +30,7 @@ export default function LoginPage() {
             }
           })
         } else {
-          console.log("no user data")
+          //console.log("no user data")
         }
   })}
 

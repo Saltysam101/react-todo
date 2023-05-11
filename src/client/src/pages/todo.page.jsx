@@ -23,7 +23,7 @@ export default function Todo() {
     .then((res) => {
       setTodo("")
       window.location.reload()
-      console.log(res)})
+      /* console.log(res) */})
   }
 
   function removeTodo(id) {
@@ -40,7 +40,7 @@ export default function Todo() {
   useEffect(()=> {
     Axios.get(`http://localhost:8080/todo?userId=${location.state.id}`)
     .then((res) => {
-      console.log(res)
+      //console.log(res)
       setTodoList(res.data)
     })
   }, [location.state.id])

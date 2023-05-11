@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/", async(req, res) => {
     console.log("get")
     let userId = req.query.userId;
-    console.log(req.query)
+    //console.log(req.query)
     let data = await selectTodos(userId);
     res.json(data)
 })
@@ -15,7 +15,7 @@ router.post("/", async(req, res) => {
     let todos = req.body.todos
     let userId = req.body.userId
     let userTodo = {todo: todos, userID: userId}
-    console.log(req.body)
+    //console.log(req.body)
     let data = await addTodo(userTodo)
     res.json(data)
 })

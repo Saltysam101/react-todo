@@ -16,7 +16,9 @@ export default function SignupPage() {
       email: email,
       password: password
     })
-    .then((res) => console.log(res))
+    .then((res) =>{ 
+
+      /* console.log(res) */})
   }
 
   return (
