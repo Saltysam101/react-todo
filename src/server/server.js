@@ -34,7 +34,7 @@ app.use(express.json());
  */
 app.use(cors({
     origin: ["http://localhost:3000"],
-    methods: ["GET", "POST", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -80,7 +80,7 @@ app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 
 /**
- * Directs all routes starting with /login to the top level login express router
+ * Directs all routes starting with /todo to the top level todo express router
  */
 app.use("/todo", todoRouter);
 /**

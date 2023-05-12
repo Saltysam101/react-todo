@@ -1,8 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import Axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignupPage() {
+
+  const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -17,12 +20,12 @@ export default function SignupPage() {
       password: password
     })
     .then((res) =>{ 
-
       /* console.log(res) */})
+      navigate("/login");
   }
 
   return (
-    <form className="flex flex-col items-center justify-center gap-2 h-screen">
+    <form className="bg-slate-300 flex flex-col items-center justify-center gap-2 h-screen">
       <label htmlFor="firstName">Firstname</label>
       <input 
       className="border-2 border-blue-500 rounded-sm"

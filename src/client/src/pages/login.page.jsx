@@ -36,7 +36,7 @@ export default function LoginPage() {
 
 
   return (
-    <form className="flex flex-col items-center justify-center gap-2 h-screen" onSubmit={(e) => e.preventDefault()}>
+    <form className="bg-slate-300 flex flex-col items-center justify-center gap-2 h-screen" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor="email">Email</label>
       <input 
       className="border-2 border-blue-500 rounded-sm"
