@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:client": "cd src/client && npm start",
-    "dev:server": "cd src/server && npm start"
+    "dev:server": "cd src/server && npm start",
+    "build:client": "cd src/client && npm build",
+    "build:server":"cd src/server && npm build"
   },
   "repository": {
     "type": "git",
