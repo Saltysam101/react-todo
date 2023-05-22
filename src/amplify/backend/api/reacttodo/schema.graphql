@@ -2,8 +2,24 @@
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-type Todo @model {
+type Todos @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String!
-  description: String
+  todo: String
+  userId: ID
+  userss: [Users] @manyToMany(relationName: "UsersTodos")
+}
+
+type Users @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  FirstName: String
+  LastName: String
+  Email: String
+  Password: String
+  Todos: [Todos] @manyToMany(relationName: "UsersTodos")
+}
+
+type Sessions @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  expires: Int
+  data: String
 }
