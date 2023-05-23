@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import config from '../config/config.js';
 
 export default function LoginPage() {
 
@@ -14,7 +14,8 @@ export default function LoginPage() {
   Axios.defaults.withCredentials = true;
 
   const login = () => {
-    Axios.post("http://localhost:8080/login",{
+  
+    Axios.post(`${config.serverUrl}/login`,{
       email: email,
       password: password
     })
