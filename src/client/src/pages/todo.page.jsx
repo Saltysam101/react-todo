@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Axios from "axios";
-import config from '../config/config.js';
+//import config from '../config/config.js';
 
 export default function Todo() {
 
@@ -23,7 +23,7 @@ export default function Todo() {
       setAlert(true);
       return
     }
-    Axios.post(`${config.serverUrl}/todo`, {
+    Axios.post(`${process.env.REACT_APP_URL}/todo`, {
       todos : todo,
       userId: userId
     })
@@ -39,13 +39,13 @@ export default function Todo() {
       setAlert(true);
       return
     }
-    await Axios.put(`${config.serverUrl}/todo?userId=${userId}&id=${id}&todo=${todo}`);
+    await Axios.put(`${process.env.REACT_APP_URL}/todo?userId=${userId}&id=${id}&todo=${todo}`);
     setAlert(false);
     getAllTodos();
   }
 
   function getAllTodos () {
-    Axios.get(`${config.serverUrl}/todo?userId=${userId}`)
+    Axios.get(`${process.env.REACT_APP_URL}/todo?userId=${userId}`)
     .then((res) => {
       console.log(res)
       setTodo("")
@@ -54,7 +54,7 @@ export default function Todo() {
   }
 
   async function removeTodo(id) {
-    await Axios.delete(`${config.serverUrl}/todo?userId=${userId}&id=${id}`)
+    await Axios.delete(`${process.env.REACT_APP_URL}/todo?userId=${userId}&id=${id}`)
     getAllTodos();
   }
   

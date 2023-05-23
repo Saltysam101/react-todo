@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import config from '../config/config.js';
+//import config from '../config/config.js';
 
 export default function LoginPage() {
 
@@ -15,7 +15,7 @@ export default function LoginPage() {
 
   const login = () => {
   
-    Axios.post(`${config.serverUrl}/login`,{
+    Axios.post(`${process.env.REACT_APP_URL}/login`,{
       email: email,
       password: password
     })

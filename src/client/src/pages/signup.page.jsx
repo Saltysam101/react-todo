@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import config from '../config/config';
+//import config from '../config/config';
 
 export default function SignupPage() {
 
@@ -14,7 +14,7 @@ export default function SignupPage() {
   const [password, setPassword] = useState("");
 
   const register = () => {
-    Axios.post(`${config.serverUrl}/register`,{
+    Axios.post(`${process.env.REACT_APP_URL}/register`,{
       firstName: firstName,
       lastName: lastName,
       email: email,
