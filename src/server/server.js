@@ -50,7 +50,8 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         maxAge: 86400,
-        path: '/'
+        path: '/',
+        sameSite: "none"
     }
 }))
 
