@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Axios from "axios";
+//import config from '../config/config.js';
 
 export default function Todo() {
 
@@ -14,6 +15,7 @@ export default function Todo() {
 
   const userId = location.state.id
 
+
   Axios.defaults.withCredentials = true;
 
   function addTodos () {
@@ -21,7 +23,7 @@ export default function Todo() {
       setAlert(true);
       return
     }
-    Axios.post("http://localhost:8080/todo", {
+    Axios.post(`http://localhost:8080/todo`, {
       todos : todo,
       userId: userId
     })
