@@ -15,6 +15,8 @@ Frontend is sending requests to port 8080, which means the server needs to run o
 
 Make sure before cloning the project to use the `local` branch as that is the one that will work with localhost on your personal machine.
 
+To install the MySql file to workbench, make sure to check `import from self-contained file`, and then click `start import`.
+
 To install dependencies for the client, you just need to `cd client` and run `npm install`. For the server folder, it's the same; `cd server` and run `npm install`. 
 
 Read [Frontend Project Structure](./src/client/README.md#project-structure) and [Backend Project Structure](./src/server/README.md#project-structure) for more details on the respective `/client` and `/server/` organization.
